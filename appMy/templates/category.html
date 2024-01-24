@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+
+{% block body %}
+<!-- Hero image -->
+<div class="hero-image">
+    
+<div class="hero-text">
+    {% if request.user.usermy.packed.slug != "normal-paket" %}
+    <h1>Sınırsız film, dizi ve çok daha fazlası.</h1>
+    <h4>İstediğiniz yerde izleyin. İstediğiniz zaman iptal edin.</h4>
+    <p>İzlemeye hazır mısınız? Üyelik oluşturmak veya üyeliğinze erişmek için e-posta adresinizi girin</p>
+    <button class="btn btn-secondary btn-lg mt-3">Oynat</button>
+    <button class="btn btn-secondary btn-lg mt-3">Daha Fazla Bilgi</button>
+    {% else %}
+    <a class="fs-3 text-white" href="##">Aboneliğinizi Yenileyin</a>
+    {% endif %}
+</div>
+
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+
+
+
+{% if request.path == '/netflix/diziler' %}
+<h3 class="text-light">Diziler</h3>
+
+{% elif request.path == '/netflix/filmler' %}
+<h3 class="text-light">Filmler</h3>
+
+{% elif request.path == '/netflix/yeni-ve-populer' %}
+<h3 class="text-light">Yeni ve Popüler</h3>
+{% endif %}
+    
+
+    
+    <!-- YENİ VE POPÜLER AYARLANACAK -->
+    
+    {% for i in content_list %}
+    <div class="col-md-2 col-4 mt-4">
+        <a href="#">
+            <div>
+                <h3 class="text-white">{{ i.title }}</h3>
+            </div>
+        </a>
+    </div>
+        
+    {% endfor %}
+        
+
+        
+
+
+    </div>
+
+</div>
+{% endblock body %}
+    
+
+        
